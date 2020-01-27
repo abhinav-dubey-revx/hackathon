@@ -48,6 +48,8 @@ export class AppComponent implements OnInit {
       this.setMaxValues();
       console.log(tableDataSource);
       this.dataSource = new MatTableDataSource(tableDataSource);
+      this.dataSource.paginator = this.paginator;
+      this.dataSource.sort = this.sort;
     });
   }
 
