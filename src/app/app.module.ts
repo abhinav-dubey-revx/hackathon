@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/shared-module/shared-module.module';
 import { BaseService } from 'src/service/base.service';
 import { DataService } from 'src/service/data.service';
+import { HttpClientModule } from '@angular/common/http';
 
 
 @NgModule({
@@ -18,6 +19,7 @@ import { DataService } from 'src/service/data.service';
     BrowserModule,
     AppRoutingModule,
     MatTableModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
   ],

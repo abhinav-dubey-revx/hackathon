@@ -125,7 +125,8 @@ export class AppComponent implements OnInit{
 
   ngOnInit() {
     this.dataservice.getReportsData().then(res => {
-
+      let tableDataSource = this.dataservice.formatData(res);
+      console.log(tableDataSource);
     });
 
   }
