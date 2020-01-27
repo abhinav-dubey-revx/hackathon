@@ -75,7 +75,7 @@ export class AppComponent implements OnInit {
           this.maxRev = this.apiData[i].revenue[j].value;
       }
     }
-    console.log(this.maxClick, this.maxConv, this.maxImp, this.maxRev);
+    // console.log(this.maxClick, this.maxConv, this.maxImp, this.maxRev);
   }
 
   scale(min, max, value, target) {
@@ -99,7 +99,7 @@ export class AppComponent implements OnInit {
     let r = 145;
     let g = this.scale(0, this.getMaxOfType(type), val, this.getTargetOfType(type));
     let b = 110;
-    console.log('rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')');
+    // console.log('rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')');
     return 'rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')';
   }
 
