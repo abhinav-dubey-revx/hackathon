@@ -26,8 +26,8 @@
         <div class="example-element-diagram">
           Clicks
           <div class="d-flex flex-row">
-            <div *ngFor='let click of element.clicks; let i = index' id='clk'>
-              {{click.value}} &nbsp;
+            <div *ngFor='let click of element.clicks; let i = index' id='clk' class='swatch'
+              [style.background-color]="applyBg(appConst.CLICKS  , click.value , i)">
             </div>
           </div>
         </div>
@@ -35,8 +35,8 @@
         <div class="example-element-diagram">
           Conversions
           <div class="d-flex flex-row">
-            <div *ngFor='let conv of element.conversions; let i = index'>
-              {{conv.value}} &nbsp;
+            <div *ngFor='let conv of element.conversions; let i = index' class='swatch'
+              [style.background-color]="applyBg(appConst.CONVERSIONS  , conv.value , i)">
             </div>
           </div>
         </div>
@@ -45,8 +45,8 @@
         <div class="example-element-diagram">
           Impressions
           <div class="d-flex flex-row">
-            <div *ngFor='let imp of element.impressions; let i = index'>
-              {{imp.value}} &nbsp;
+            <div *ngFor='let imp of element.impressions; let i = index' class='swatch'
+              [style.background-color]="applyBg(appConst.IMPRESSIONS  , imp.value , i)">
             </div>
           </div>
         </div>
@@ -55,8 +55,8 @@
         <div class="example-element-diagram">
           Revenue
           <div class="d-flex flex-row">
-            <div *ngFor='let rev of element.revenue; let i = index'>
-              {{rev.value}} &nbsp;
+            <div *ngFor='let rev of element.revenue; let i = index' class='swatch'
+              [style.background-color]="applyBg(appConst.REVENUE  , rev.value , i)">
             </div>
           </div>
         </div>
@@ -72,3 +72,6 @@
   <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="example-detail-row"></tr>
 
 </table>
+
+
+<!-- <div class='swat' [style.background-color]="www(0)"></div> -->

@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DataService } from 'src/service/data.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
+import { Constants } from './Constants';
 
 @Component({
   selector: 'app-root',
@@ -17,7 +18,14 @@ import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 })
 
 export class AppComponent implements OnInit {
-  title = 'ui';
+  appConst = Constants;
+
+  apiData: any[] = [];
+  maxClick: number = 0;
+  maxConv: number = 0;
+  maxImp: number = 0;
+  maxRev: number = 0;
+  // title = 'ui';
   expandedElement: any;
   displayedColumns: any[] = ['engagementName', 'segmentName', 'status'];
   dataSource: MatTableDataSource<any>;
@@ -36,24 +44,38 @@ export class AppComponent implements OnInit {
   getData() {
     this.dataservice.getReportsData().then(res => {
       let tableDataSource = this.dataservice.formatData(res);
+      this.apiData = tableDataSource;
+      this.setMaxValues();
       console.log(tableDataSource);
       this.dataSource = new MatTableDataSource(tableDataSource);
     });
   }
 
-  rgb(r, g, b) {
-    return 'rgb(' + [(r || 0), (g || 0), (b || 0)].join(',') + ')';
-  }
+  setMaxValues() {
+    console.log(this.apiData);
+    for (let i = 0; i < this.apiData.length; i++) {
 
-  changeColour(number) {
-    var ele = document.getElementsByClassName("color_code");
-    ele[0].style.background = rgb(145, number, 110);
-  }
+      for (let j = 0; j < this.apiData[i].clicks.length; j++) {
+        if (this.apiData[i].clicks[j] && this.maxClick < this.apiData[i].clicks[j].value)
+          this.maxClick = this.apiData[i].clicks[j].value;
+      }
 
-  change() {
-    var input = document.getElementById('input1');
-    console.log("called", input.value);
-    changeColour(input.value);
+      for (let j = 0; j < this.apiData[i].conversions.length; j++) {
+        if (this.apiData[i].conversions[j] && this.maxConv < this.apiData[i].conversions[j].value)
+          this.maxConv = this.apiData[i].conversions[j].value;
+      }
+
+      for (let j = 0; j < this.apiData[i].conversions.length; j++) {
+        if (this.apiData[i].conversions[j] && this.maxImp < this.apiData[i].conversions[j].value)
+          this.maxImp = this.apiData[i].conversions[j].value;
+      }
+
+      for (let j = 0; j < this.apiData[i].revenue.length; j++) {
+        if (this.apiData[i].revenue[j] && this.maxRev < this.apiData[i].revenue[j].value)
+          this.maxRev = this.apiData[i].revenue[j].value;
+      }
+    }
+    console.log(this.maxClick, this.maxConv, this.maxImp, this.maxRev);
   }
 
   scale(min, max, value, target) {
@@ -73,6 +95,43 @@ export class AppComponent implements OnInit {
     return NewValue;
   }
 
+  applyBg(type, val, index) {
+    let r = 145;
+    let g = this.scale(0, this.getMaxOfType(type), val, this.getTargetOfType(type));
+    let b = 110;
+    console.log('rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')');
+    return 'rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')';
+  }
+
+  getMaxOfType(type: string) {
+    switch (type) {
+      case Constants.CLICKS:
+        return this.maxClick;
+
+      case Constants.REVENUE:
+        return this.maxRev;
+
+      case Constants.CONVERSIONS:
+        return this.maxConv;
+
+      case Constants.IMPRESSIONS:
+        return this.maxImp;
+    }
+  }
+
+
+  getTargetOfType(type: string) {
+    switch (type) {
+      case Constants.CLICKS:
+        return this.maxClick/2;
+      case Constants.REVENUE:
+        return this.maxRev/2;
+      case Constants.CONVERSIONS:
+        return this.maxConv/2;
+      case Constants.IMPRESSIONS:
+        return this.maxImp/2;
+    }
+  }
 
 
 }

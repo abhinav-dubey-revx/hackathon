@@ -1,5 +1,5 @@
 table {
-  width: 100%;
+  width: 100vw;
 }
 
 tr.example-detail-row {
@@ -49,6 +49,12 @@ tr.example-element-row:not(.example-expanded-row):active {
 .swatch {
   height: 15px;
   margin: 2px;
-  width: 15px;
+  width: 9px;
   background-color: rgb(47, 75, 124);
+}
+
+.swat {
+  height: 55px;
+  margin: 12px;
+  width: 55px;
 }
