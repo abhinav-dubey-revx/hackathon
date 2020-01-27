@@ -1,0 +1,20 @@
+<div class="user-action" >
+  <div class="user-icon" ngbDropdown placement="bottom-left">
+    <button class="btn user-drop" id="dropdown-menu" ngbDropdownToggle> 
+      {{username.charAt(0).toUpperCase()}} 
+    </button>
+    <div class="pop-over" ngbDropdownMenu aria-labelledby="dropdown-menu">
+        <!-- <div class="btn" *ngFor="let user of loggedUsers">
+          <button>{{user}}</button>
+        </div> -->
+          <button class="btn eng-btn-primary-ghost " (click)="logoutClick()">Logout</button>
+      </div>
+  </div>
+</div>
+<!-- <button type="button" mdbBtn color="default" class="waves-light" mdbPopover="And here some amazing content. It's very engaging. Right?"
+  placement="bottom" mdbPopoverHeader="Popover on bottom" mdbWavesEffect>
+  Popover on bottom
+</button> -->
+<!-- <ng-template #popContent>
+  
+</ng-template> -->

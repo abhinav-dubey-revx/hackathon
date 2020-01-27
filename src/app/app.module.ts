@@ -11,12 +11,14 @@ import { DataService } from 'src/service/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DummyTableComponent } from './dummy-table/dummy-table.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DummyTableComponent
+    DummyTableComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

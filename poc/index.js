@@ -24,7 +24,7 @@ function change() {
  * @param {*} max 
  */
 function scale(min, max, value, target) {
-  if(value == target) return 127;
+  if(value == parseInt(target)) return 127;
   var OldMax = max;
   var OldMin = min;
   if(value < target) {
@@ -38,4 +38,9 @@ function scale(min, max, value, target) {
   var NewRange = (NewMax - NewMin);  
   var NewValue = (((value - OldMin) * NewRange) / OldRange) + NewMin;
   return NewValue;
+}
+
+
+function parseTemplate(input) {
+
 }
