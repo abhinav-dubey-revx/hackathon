@@ -89,7 +89,7 @@ export class DataService {
    * @param {*} max 
    */
   scale(min, max, value, target) {
-    if(value == target) return 127;
+    if(value == parseInt(target)) return 127;
     var OldMax = max;
     var OldMin = min;
     if(value < target) {

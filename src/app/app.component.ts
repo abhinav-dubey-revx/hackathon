@@ -79,18 +79,18 @@ export class AppComponent implements OnInit {
   }
 
   scale(min, max, value, target) {
-    if (value == target) return 127;
+    if(value == parseInt(target)) return 127;
     var OldMax = max;
     var OldMin = min;
-    if (value < target) {
+    if(value < target) {
       var NewMax = 127;
       var NewMin = 0;
-    } if (value > target) {
+    } if(value > target) {
       var NewMax = 255;
       var NewMin = 127;
     }
     var OldRange = (OldMax - OldMin);
-    var NewRange = (NewMax - NewMin);
+    var NewRange = (NewMax - NewMin);  
     var NewValue = (((value - OldMin) * NewRange) / OldRange) + NewMin;
     return NewValue;
   }
