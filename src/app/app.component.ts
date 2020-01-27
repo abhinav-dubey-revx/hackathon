@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { animate, state, style, transition, trigger } from '@angular/animations';
 import { DataService } from 'src/service/data.service';
+import * as _ from 'lodash';
+import { apiResp } from './apiResp';
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const ELEMENT_DATA: PeriodicElement[] = [
@@ -113,7 +115,7 @@ export interface PeriodicElement {
   ],
 })
 
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
   title = 'ui';
   dataSource = ELEMENT_DATA;
   columnsToDisplay = ['name', 'weight', 'symbol', 'position'];
@@ -121,7 +123,7 @@ export class AppComponent implements OnInit{
 
   constructor(
     private dataservice: DataService
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.dataservice.getReportsData().then(res => {
@@ -129,4 +131,5 @@ export class AppComponent implements OnInit{
     });
 
   }
+
 }

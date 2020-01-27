@@ -45,3 +45,10 @@ tr.example-element-row:not(.example-expanded-row):active {
 .example-element-description-attribution {
   opacity: 0.5;
 }
+
+.swatch {
+  height: 15px;
+  margin: 2px;
+  width: 15px;
+  background-color: rgb(47, 75, 124);
+}
