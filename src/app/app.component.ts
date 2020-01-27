@@ -3,6 +3,7 @@ import { animate, state, style, transition, trigger } from '@angular/animations'
 import { DataService } from 'src/service/data.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Constants } from './Constants';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,11 @@ import { Constants } from './Constants';
 export class AppComponent implements OnInit {
   appConst = Constants;
 
+  listSearchForm: FormGroup;
+  searchedList = [];
+
+
+
   apiData: any[] = [];
   maxClick: number = 0;
   maxConv: number = 0;
@@ -34,10 +40,15 @@ export class AppComponent implements OnInit {
   @ViewChild('input', { static: false }) input: ElementRef;
 
   constructor(
-    private dataservice: DataService
+    private dataservice: DataService,
+    private formBuilder: FormBuilder,
+
   ) { }
 
   ngOnInit() {
+    this.listSearchForm = this.formBuilder.group({
+      searchInput: ['', ''],
+    });
     this.getData();
   }
 
@@ -125,13 +136,13 @@ export class AppComponent implements OnInit {
   getTargetOfType(type: string) {
     switch (type) {
       case Constants.CLICKS:
-        return this.maxClick/2;
+        return this.maxClick / 2;
       case Constants.REVENUE:
-        return this.maxRev/2;
+        return this.maxRev / 2;
       case Constants.CONVERSIONS:
-        return this.maxConv/2;
+        return this.maxConv / 2;
       case Constants.IMPRESSIONS:
-        return this.maxImp/2;
+        return this.maxImp / 2;
     }
   }
 

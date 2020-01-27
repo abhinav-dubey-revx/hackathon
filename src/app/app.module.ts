@@ -3,13 +3,14 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MatTableModule, MatToolbarModule, MatIconModule } from '@angular/material'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { MatTableModule, MatToolbarModule, MatIconModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatOptionModule, MatSelectModule, MatProgressBarModule, MatCheckboxModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/shared-module/shared-module.module';
 import { BaseService } from 'src/service/base.service';
 import { DataService } from 'src/service/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DummyTableComponent } from './dummy-table/dummy-table.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,6 +22,15 @@ import { DummyTableComponent } from './dummy-table/dummy-table.component';
     BrowserModule,
     AppRoutingModule,
 
+    FormsModule,
+    MatProgressBarModule,
+    MatOptionModule,
+    MatCheckboxModule,
+    MatSelectModule,
+    MatTooltipModule,
+    ReactiveFormsModule,
+    MatMenuModule,
+    MatPaginatorModule,
     MatIconModule,
     HttpClientModule,
     MatToolbarModule,
