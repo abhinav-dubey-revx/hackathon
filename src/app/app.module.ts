@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MatTableModule } from '@angular/material'
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; 
+import { MatTableModule, MatToolbarModule, MatIconModule } from '@angular/material'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -14,6 +14,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
   imports: [
     BrowserModule,
     AppRoutingModule,
+
+    MatIconModule,
+    MatToolbarModule,
     MatTableModule,
     BrowserAnimationsModule
   ],
