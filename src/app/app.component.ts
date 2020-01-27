@@ -4,6 +4,8 @@ import { DataService } from 'src/service/data.service';
 import { MatPaginator, MatSort, MatTableDataSource } from '@angular/material';
 import { Constants } from './Constants';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { LoaderService } from 'src/shared-module/loader/loader.service';
+
 
 @Component({
   selector: 'app-root',
@@ -24,8 +26,6 @@ export class AppComponent implements OnInit {
   listSearchForm: FormGroup;
   searchedList = [];
 
-
-
   apiData: any[] = [];
   maxClick: number = 0;
   maxConv: number = 0;
@@ -35,82 +35,38 @@ export class AppComponent implements OnInit {
   expandedElement: any;
   displayedColumns: any[] = ['engagementName', 'segmentName', 'status'];
   dataSource: MatTableDataSource<any>;
-  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: false }) sort: MatSort;
+  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
   @ViewChild('input', { static: false }) input: ElementRef;
+  showProgressBar: boolean;
 
   constructor(
     private dataservice: DataService,
     private formBuilder: FormBuilder,
-
+    private LoaderService: LoaderService
   ) { }
 
   ngOnInit() {
-    this.listSearchForm = this.formBuilder.group({
-      searchInput: ['', ''],
-    });
     this.getData();
   }
 
   getData() {
+    this.showProgressBar = true;
     this.dataservice.getReportsData().then(res => {
       let tableDataSource = this.dataservice.formatData(res);
       this.apiData = tableDataSource;
-      this.setMaxValues();
-      console.log(tableDataSource);
       this.dataSource = new MatTableDataSource(tableDataSource);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+      this.showProgressBar = false;
+      console.log(tableDataSource)
+
     });
-  }
-
-  setMaxValues() {
-    console.log(this.apiData);
-    for (let i = 0; i < this.apiData.length; i++) {
-
-      for (let j = 0; j < this.apiData[i].clicks.length; j++) {
-        if (this.apiData[i].clicks[j] && this.maxClick < this.apiData[i].clicks[j].value)
-          this.maxClick = this.apiData[i].clicks[j].value;
-      }
-
-      for (let j = 0; j < this.apiData[i].conversions.length; j++) {
-        if (this.apiData[i].conversions[j] && this.maxConv < this.apiData[i].conversions[j].value)
-          this.maxConv = this.apiData[i].conversions[j].value;
-      }
-
-      for (let j = 0; j < this.apiData[i].conversions.length; j++) {
-        if (this.apiData[i].conversions[j] && this.maxImp < this.apiData[i].conversions[j].value)
-          this.maxImp = this.apiData[i].conversions[j].value;
-      }
-
-      for (let j = 0; j < this.apiData[i].revenue.length; j++) {
-        if (this.apiData[i].revenue[j] && this.maxRev < this.apiData[i].revenue[j].value)
-          this.maxRev = this.apiData[i].revenue[j].value;
-      }
-    }
-    // console.log(this.maxClick, this.maxConv, this.maxImp, this.maxRev);
-  }
-
-  scale(min, max, value, target) {
-    if (value == target) return 127;
-    var OldMax = max;
-    var OldMin = min;
-    if (value < target) {
-      var NewMax = 127;
-      var NewMin = 0;
-    } if (value > target) {
-      var NewMax = 255;
-      var NewMin = 127;
-    }
-    var OldRange = (OldMax - OldMin);
-    var NewRange = (NewMax - NewMin);
-    var NewValue = (((value - OldMin) * NewRange) / OldRange) + NewMin;
-    return NewValue;
   }
 
   applyBg(type, val, index) {
     let r = 145;
-    let g = this.scale(0, this.getMaxOfType(type), val, this.getTargetOfType(type));
+    let g = val;
     let b = 110;
     // console.log('rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')');
     return 'rgb( ' + r.toString() + ',' + g.toString() + ',' + b.toString() + ')';
@@ -119,32 +75,31 @@ export class AppComponent implements OnInit {
   getMaxOfType(type: string) {
     switch (type) {
       case Constants.CLICKS:
-        return this.maxClick;
+        // return this.maxClick;
+        return this.dataservice.maxclick
 
       case Constants.REVENUE:
-        return this.maxRev;
+        // return this.maxRev;
+        return this.dataservice.maxrev
 
       case Constants.CONVERSIONS:
-        return this.maxConv;
+        // return this.maxConv;
+        return this.dataservice.maxconver
 
       case Constants.IMPRESSIONS:
-        return this.maxImp;
+        // return this.maxImp;
+        return this.dataservice.maximp
     }
   }
 
+  applySearchFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
 
-  getTargetOfType(type: string) {
-    switch (type) {
-      case Constants.CLICKS:
-        return this.maxClick / 2;
-      case Constants.REVENUE:
-        return this.maxRev / 2;
-      case Constants.CONVERSIONS:
-        return this.maxConv / 2;
-      case Constants.IMPRESSIONS:
-        return this.maxImp / 2;
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
     }
   }
+
 
 
 }

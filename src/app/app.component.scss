@@ -1,5 +1,6 @@
 table {
-  width: 100vw;
+  width: 99%;
+  margin: 10px;
 }
 
 tr.example-detail-row {
@@ -16,6 +17,7 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .example-element-row td {
   border-bottom-width: 0;
+  width: 35px;
 }
 
 .example-element-detail {
@@ -24,12 +26,13 @@ tr.example-element-row:not(.example-expanded-row):active {
 }
 
 .example-element-diagram {
-  min-width: 80px;
-  border: 1px solid black;
+  display: flex;
   padding: 8px;
   font-weight: lighter;
   margin: 8px 0;
-  height: 64px;
+  height: 36px;
+  box-shadow: 1px 2px 1px 1px #ccc;
+  border-radius: 9px;
 }
 
 .example-element-symbol {
@@ -48,11 +51,21 @@ tr.example-element-row:not(.example-expanded-row):active {
 
 .swatch {
   height: 15px;
-  margin: 2px;
-  width: 9px;
+  // margin: 2px;
+  width: 12px;
   background-color: rgb(47, 75, 124);
 }
 
 .example-element-description-attribution {
   opacity: 0.5;
+}
+
+.my-tooltip {
+  white-space: pre-line;
+}
+
+.mat-spinner {
+  position: relative;
+  margin-left: 40%;
+  margin-right: 50%;
 }

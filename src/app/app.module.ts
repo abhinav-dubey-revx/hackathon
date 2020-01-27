@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { MatTableModule, MatToolbarModule, MatIconModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatOptionModule, MatSelectModule, MatProgressBarModule, MatCheckboxModule } from '@angular/material'
+import { MatTableModule, MatSortModule, MatProgressSpinnerModule, MatToolbarModule, MatIconModule, MatPaginatorModule, MatTooltipModule, MatMenuModule, MatOptionModule, MatSelectModule, MatProgressBarModule, MatCheckboxModule } from '@angular/material'
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SharedModule } from 'src/shared-module/shared-module.module';
 import { BaseService } from 'src/service/base.service';
@@ -26,8 +26,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatProgressBarModule,
     MatOptionModule,
     MatCheckboxModule,
+    MatProgressSpinnerModule,
     MatSelectModule,
     MatTooltipModule,
+    MatSortModule,
     ReactiveFormsModule,
     MatMenuModule,
     MatPaginatorModule,
