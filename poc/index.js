@@ -5,6 +5,7 @@ console.log("file loaded");
 function rgb(r,g,b) {
   return 'rgb(' + [(r||0),(g||0),(b||0)].join(',') + ')';
 }
+
 function changeColour(number) {
   var ele = document.getElementsByClassName("color_code");
   ele[0].style.background = rgb(145, number, 110);
@@ -23,7 +24,7 @@ function change() {
  * @param {*} max 
  */
 function scale(min, max, value, target) {
-  if(value == terget) return 127;
+  if(value == target) return 127;
   var OldMax = max;
   var OldMin = min;
   if(value < target) {

@@ -9,11 +9,13 @@ import { SharedModule } from 'src/shared-module/shared-module.module';
 import { BaseService } from 'src/service/base.service';
 import { DataService } from 'src/service/data.service';
 import { HttpClientModule } from '@angular/common/http';
+import { DummyTableComponent } from './dummy-table/dummy-table.component';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DummyTableComponent
   ],
   imports: [
     BrowserModule,
