@@ -23,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatToolbarModule,
     MatTableModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
   ],
