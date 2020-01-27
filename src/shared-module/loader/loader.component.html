@@ -1,0 +1,10 @@
+<!-- <div [class.loader-hidden]="!show">
+    <div class="loader-overlay">
+        <div>
+            <mat-progress-bar mode="indeterminate" *ngIf="show"></mat-progress-bar>
+        </div>
+    </div>
+</div> -->
+<div class="overlay-spinner" [class.loader-hidden]="!show" *ngIf="show">
+    <mat-progress-spinner style="margin:0 auto; top: 50vh" mode="indeterminate" ></mat-progress-spinner>
+</div>
