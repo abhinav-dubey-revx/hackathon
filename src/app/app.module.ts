@@ -10,12 +10,14 @@ import { BaseService } from 'src/service/base.service';
 import { DataService } from 'src/service/data.service';
 import { HttpClientModule } from '@angular/common/http';
 import { DummyTableComponent } from './dummy-table/dummy-table.component';
+import { HeaderComponent } from './header/header.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    DummyTableComponent
+    DummyTableComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,

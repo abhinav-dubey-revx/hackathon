@@ -45,6 +45,8 @@ export class DataService {
             var obj = {
               engagementName: engagement,
               segmentName: segment,
+              channelName: channel,
+              campaign: camp,
               impressions: [],
               clicks:[],
               conversions: [],

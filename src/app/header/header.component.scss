@@ -1,0 +1,48 @@
+.header {
+  width: 100%;
+  top: 0;
+  display: flex;
+
+}
+.navbar-header {
+    min-height: 40px;
+}
+
+.title {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;
+  color: #0c3688;
+
+}    
+.navbar-header {
+      position: relative;
+      text-align: center;
+      display: flex;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+
+      img {
+        // padding: 11px 15px;
+        height: 60px;
+        cursor: pointer;
+      }
+      // a {
+      //     // padding: 0 5px
+      // }
+    }
+  .header-menu {
+    background-color: transparent;
+    color: #494949;
+    position: relative;
+    padding: 0 15px;
+    min-height: 46px;
+
+
+  }
+  
